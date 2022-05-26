@@ -1,7 +1,15 @@
 <template>
-  <div>Hello World!</div>
+  <fragment>
+    <column-list></column-list>
+  </fragment>
 </template>
 
 <script>
-export default {}
+import ColumnList from './components/ColumnList/index.vue'
+
+export default {
+  components: {
+    ColumnList,
+  },
+}
 </script>
