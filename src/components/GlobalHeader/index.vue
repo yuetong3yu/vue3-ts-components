@@ -3,9 +3,11 @@
     <div class="font-sans text-gray-800">🎃 {{ title }}</div>
     <div class="absolute right-6">
       <div v-if="isLogin">
-        <p class="font-sans text-gray-800">
-          👋 你好 {{ userName && userName.toLocaleUpperCase() }}
-        </p>
+        <dropdown
+          :name="userName"
+          :dropdownList="dropdownList"
+          :quit="onQuit"
+        />
       </div>
       <div v-else class="flex items-center p-4">
         <button
@@ -27,6 +29,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import Dropdown from '../Dropdown/index.vue'
+import type { DropdownProps } from '../Dropdown/index.vue'
+
 export default defineComponent({
   props: {
     isLogin: Boolean,
@@ -36,6 +41,22 @@ export default defineComponent({
     },
     title: String,
     onLogin: Function,
+    onQuit: Function,
+  },
+  components: {
+    Dropdown,
+  },
+  setup() {
+    const dropdownList: DropdownProps[] = [
+      {
+        title: '退出',
+        onClick: () => {
+          console.log('hi')
+        },
+      },
+    ]
+
+    return { dropdownList }
   },
 })
 </script>

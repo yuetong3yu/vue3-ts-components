@@ -4,6 +4,7 @@
     :isLogin="isLogin"
     :userName="'yuetong'"
     :onLogin="onLogin"
+    :onQuit="onQuit"
   />
   <column-list :list="columnList" />
 </template>
@@ -55,10 +56,15 @@ export default {
       loginStatus.value = true
     }
 
+    const onQuit = () => {
+      loginStatus.value = false
+    }
+
     return {
       columnList: mockData,
       isLogin: loginStatus,
       onLogin,
+      onQuit,
     }
   },
 }
