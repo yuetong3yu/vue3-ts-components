@@ -1,7 +1,10 @@
 <template>
-  <fragment>
-    <column-list :list="columnList" />
-  </fragment>
+  <global-header
+    :title="'yuetong3yu.dev'"
+    :isLogin="true"
+    :userName="'yuetong'"
+  />
+  <column-list :list="columnList" />
 </template>
 
 <script lang="ts">
@@ -9,6 +12,7 @@ import './App.css'
 
 import ColumnList from './components/ColumnList/index.vue'
 import type { ColumnProps } from './components/ColumnList/index.vue'
+import GlobalHeader from './components/GlobalHeader/index.vue'
 
 const mockData: ColumnProps[] = [
   {
@@ -40,6 +44,7 @@ const mockData: ColumnProps[] = [
 export default {
   components: {
     ColumnList,
+    GlobalHeader,
   },
   setup() {
     return {
