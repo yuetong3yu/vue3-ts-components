@@ -8,6 +8,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "bootstrap": "^5.0.0-beta3",
     "vue": "^3.2.33"
   },
   "devDependencies": {
