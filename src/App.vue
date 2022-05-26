@@ -1,14 +1,16 @@
 <template>
   <global-header
     :title="'yuetong3yu.dev'"
-    :isLogin="true"
+    :isLogin="isLogin"
     :userName="'yuetong'"
+    :onLogin="onLogin"
   />
   <column-list :list="columnList" />
 </template>
 
 <script lang="ts">
 import './App.css'
+import { ref } from 'vue'
 
 import ColumnList from './components/ColumnList/index.vue'
 import type { ColumnProps } from './components/ColumnList/index.vue'
@@ -47,8 +49,16 @@ export default {
     GlobalHeader,
   },
   setup() {
+    const loginStatus = ref(false)
+
+    const onLogin = () => {
+      loginStatus.value = true
+    }
+
     return {
       columnList: mockData,
+      isLogin: loginStatus,
+      onLogin,
     }
   },
 }
