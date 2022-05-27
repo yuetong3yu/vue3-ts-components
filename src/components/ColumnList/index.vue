@@ -3,7 +3,7 @@
     <li
       v-for="columnItem in list"
       :key="columnItem.id"
-      class="w-48 p-3 m-3 bg-slate-100 shadow-lg flex flex-col items-center"
+      class="w-48 p-3 m-3 bg-slate-100 shadow-lg flex flex-col items-center cursor-pointer"
     >
       <img
         :src="columnItem.avatar"

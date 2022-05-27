@@ -10,7 +10,7 @@
       ></div>
     </div>
   </div>
-  <div v-if="open">
+  <div v-if="open" ref="dropdownRef">
     <ul v-if="dropdownList">
       <li
         v-for="dropdownItem in dropdownList"
@@ -31,8 +31,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import type { PropType } from 'vue'
+
+import { useClickOutside } from '../../hooks'
 
 export interface DropdownProps {
   title: string
@@ -47,6 +49,13 @@ export default defineComponent({
   },
   setup(props) {
     const open = ref(false)
+    const dropdownRef = ref<HTMLElement | null>(null)
+
+    const isClickOutside = useClickOutside(dropdownRef)
+
+    watch(isClickOutside, () => {
+      console.log('123', isClickOutside.value)
+    })
 
     const toggleOpen = () => {
       open.value = !open.value
@@ -58,7 +67,7 @@ export default defineComponent({
       fn()
     }
 
-    return { open, toggleOpen, handleDropdownClick }
+    return { open, dropdownRef, toggleOpen, handleDropdownClick }
   },
 })
 </script>
